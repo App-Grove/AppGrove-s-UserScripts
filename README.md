@@ -19,3 +19,11 @@ Twitterのメディア欄を開いたとき、デフォルトでひらくもの�
 ```
 https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/twitter/x-media-photo-default.user.js
 ```
+
+### Google Sites
+#### Google Sites Alert
+Google Sitesを開いた際、Google公式でないことを警告するアラートを表示します。  
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/google-sites-alert.user.js)
+```
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/google-sites-alert.user.js
+```
