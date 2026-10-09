@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Open photos by default in the Twitter media tab
 // @namespace    https://x.com/
-// @version      1.2.1
+// @version      1.2.3
 // @description  Videos now open by default in the Twitter media tab, so I'll make photos open by default instead.
 // @author       daizu-007
 // @match        https://x.com/*
@@ -46,7 +46,7 @@
     return { user: m[1].toLowerCase(), filter: u.searchParams.get("filter") || null };
   }
 
-  /** フィルタ指定のないメディアURLなら ?filter=photo 付きのURLを返す(対象外なら null) */
+  /** photo 以外のフィルターが指定されたメディアURLを photo に変換する(対象外なら null) */
   function withPhotoFilter(href) {
     let u;
     try {
@@ -55,7 +55,9 @@
       return null;
     }
     if (!MEDIA_PATH_RE.test(u.pathname)) return null;
-    if (u.searchParams.has("filter")) return null; // filter=video 等は尊重する
+    // X は動画をデフォルトとして URL に明示することがあるため、
+    // photo 以外のフィルターは（ユーザーが動画を選んだ場合を除き）photo に寄せる。
+    if (u.searchParams.get("filter") === "photo") return null;
     u.searchParams.set("filter", "photo");
     return u.href;
   }
@@ -149,7 +151,7 @@
   /** 対象URLなら { user } を返す(対象外・ユーザーが動画を選択済みなら null) */
   function shouldEnforceUrl(href) {
     const media = parseMedia(href);
-    if (!media || media.filter) return null;
+    if (!media || media.filter === "photo") return null;
     if (explicitVideo.has(media.user)) return null;
     if (Date.now() - videoChosenAt < VIDEO_MENU_GRACE_MS) return null;
     return media;
@@ -319,11 +321,11 @@
    * 初回ロード
    * ------------------------------------------------------------------ */
   // その場書き換え(replaceState)はXの起動と競合するため、
-  // 初回は「本当のナビゲーション」で正規化する。こうすればXは必ず
-  // ?filter=photo 付きのURLで起動するので、注入タイミングに依存しない。
+  // 初回ロード時は「本当のナビゲーション」で画像フィルターに正規化する。
+  // filter=video がURLに明示される場合も、メニューでの明示選択でなければ対象。
   (function normalizeOnLoad() {
     const cur = parseMedia(location.href);
-    if (!cur || cur.filter) return;
+    if (!cur || cur.filter === "photo") return;
     const target = withPhotoFilter(location.href);
     if (!target) return;
     if (guardLimit(REPLACE_LOG_KEY, location.pathname, 3, 10000)) return;
@@ -339,11 +341,27 @@
    * ------------------------------------------------------------------ */
   function fixup() {
     const cur = parseMedia(location.href);
-    if (cur && !cur.filter) enforcePhotoMode();
+    if (!cur) return;
+    if (cur.filter !== "photo") {
+      enforcePhotoMode();
+    } else {
+      // URL が photo でも、X の内部状態が動画のままのケースを検出する。
+      scheduleVerify();
+    }
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", fixup, { once: true });
   } else {
     fixup();
   }
+
+  // X は起動後に History API の処理を差し替えることがあり、
+  // document-start で設定した pushState / replaceState のフックを通らず
+  // SPA 遷移する場合がある。URLの変化を監視し、別タブからメディアへ移動した場合も補正する。
+  let observedHref = location.href;
+  setInterval(() => {
+    if (location.href === observedHref) return;
+    observedHref = location.href;
+    fixup();
+  }, 250);
 })();
