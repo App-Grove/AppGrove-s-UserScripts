@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Open photos by default in the Twitter media tab
 // @namespace    https://x.com/
-// @version      1.2.3
+// @version      1.2.4
 // @description  Videos now open by default in the Twitter media tab, so I'll make photos open by default instead.
 // @author       daizu-007
 // @match        https://x.com/*
@@ -341,7 +341,12 @@
    * ------------------------------------------------------------------ */
   function fixup() {
     const cur = parseMedia(location.href);
-    if (!cur) return;
+    if (!cur) {
+      // 動画の手動選択はメディアタブを離れるまでだけ尊重する。
+      explicitVideo.clear();
+      videoChosenAt = 0;
+      return;
+    }
     if (cur.filter !== "photo") {
       enforcePhotoMode();
     } else {
