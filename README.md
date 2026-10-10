@@ -41,7 +41,7 @@ https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/
   
 #### Open photos by default in the Twitter media tab
 Twitterのメディア欄を開いたとき、デフォルトでひらくものを動画から画像に変更します。  
-新しくインストールする場合は「Open Twitter/X Media Tab to Photos by Default」を使ってください。
+新しくインストールする場合は[「Open Twitter/X Media Tab to Photos by Default」](https://github.com/App-Grove/AppGrove-s-UserScripts#open-twitterx-media-tab-to-photos-by-default)を使ってください。
   
 [インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/twitter/x-media-photo-default.user.js)
 ```
