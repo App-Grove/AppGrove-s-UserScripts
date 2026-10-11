@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         TenbinAI Auto Theme
 // @namespace    net.appgrove.userscripts
-// @version      1.0.0
+// @version      1.0.1
 // @description  Sync GMO Tenbin AI's theme setting with the OS
 // @author       appgrove
 // @license      Apache-2.0
 // @homepageURL  https://github.com/App-Grove/AppGrove-s-UserScripts
 // @supportURL   https://github.com/App-Grove/AppGrove-s-UserScripts/issues
-// @match        https://sites.google.com/view/*
+// @match        https://tenbin.ai/*
+// @match        https://*.tenbin.ai/*
 // @run-at       document-start
 // @grant        none
 // @noframes
