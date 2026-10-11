@@ -11,6 +11,23 @@ Edge: [Violentmonkey - Microsoft Edge Addons](https://microsoftedge.microsoft.co
 手動インストール: [Violentmonkey - GitHub](https://github.com/violentmonkey/violentmonkey)  
   
 ## UserScript一覧
+### Google Sites
+#### Google Sites Alert
+Google Sitesを開いた際、Google公式でないことを警告するアラートを表示します。  
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/google-sites-alert.user.js)
+```
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/google-sites-alert.user.js
+```
+
+### TenbinAI
+#### TenbinAI Auto Theme
+GMO Tenbin AIのテーマ設定をOSの設定と同期します。
+
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/tenbinai-auto-theme.user.js)
+```
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/tenbinai-auto-theme.user.js
+```
+
 ### Twitter
 #### Show All Posts on Twitter/X Profiles
 Twitterのプロフィールページで、デフォルトで「ポスト」ではなく「すべて」を表示するようにします。
@@ -26,14 +43,6 @@ Twitterのメディア欄を開いたとき、デフォルトでひらくもの�
 [インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-media-opens-on-photos.user.js)
 ```
 https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-media-opens-on-photos.user.js
-```
-
-### Google Sites
-#### Google Sites Alert
-Google Sitesを開いた際、Google公式でないことを警告するアラートを表示します。  
-[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/google-sites-alert.user.js)
-```
-https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/google-sites-alert.user.js
 ```
 
 ### アーカイブ
