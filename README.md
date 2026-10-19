@@ -45,6 +45,15 @@ Twitterのメディア欄を開いたとき、デフォルトでひらくもの�
 https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-media-opens-on-photos.user.js
 ```
 
+### DeepSeek
+#### Custom Instruction Injector for DeepSeek
+DeepSeekの公式チャットでカスタム指示を設定できるようにします。
+
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/deepseek-custom-instruction.user.js)
+```
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/deepseek-custom-instruction.user.js
+```
+
 ### アーカイブ
 こちらのUserScriptは現在メンテナンスされていません。  
   
