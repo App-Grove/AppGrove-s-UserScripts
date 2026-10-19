@@ -45,6 +45,14 @@ Twitterのメディア欄を開いたとき、デフォルトでひらくもの�
 https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-media-opens-on-photos.user.js
 ```
 
+#### Twitter/X Direct Share URL
+Twitter/Xの「共有」ボタンを押したとき、共有メニューを開かずにポストのURLをクリップボードへコピーします。
+
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-direct-share.user.js)
+```
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-direct-share.user.js
+```
+
 ### DeepSeek
 #### Custom Instruction Injector for DeepSeek
 DeepSeekの公式チャットでカスタム指示を設定できるようにします。
