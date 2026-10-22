@@ -53,6 +53,14 @@ Twitter/Xの「共有」ボタンを押したとき、共有メニューを開�
 https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-direct-share.user.js
 ```
 
+#### Twitter/X Share URL Improver
+Twitter/Xの共有メニューで、通常のURLのクエリパラメータを除去し、fixupx.comのリンクをコピーする項目を追加します。
+
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-share-url-improver.user.js)
+```
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-share-url-improver.user.js
+```
+
 ### DeepSeek
 #### Custom Instruction Injector for DeepSeek
 DeepSeekの公式チャットでカスタム指示を設定できるようにします。
