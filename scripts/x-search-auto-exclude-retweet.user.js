@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         X Search Auto Exclude Retweet
 // @namespace    net.appgrove.userscripts
-// @version      1.0.0
+// @version      1.0.1
 // @description  Automatically appends "-filter:retweets" to search queries on X/Twitter to exclude retweets from search results.
 // @author       appgrove
 // @license      Apache-2.0
@@ -38,6 +38,7 @@
      */
     function updateInput(input) {
         if (!(input instanceof HTMLInputElement)) return;
+        if (new URL(location.href).searchParams.get('f') === 'user') return;
 
         const current = input.value;
         const updated = appendFilter(current);
@@ -106,7 +107,8 @@
 
             if (
                 !/(^|\.)((x|twitter)\.com)$/i.test(url.hostname) ||
-                !url.pathname.startsWith('/search')
+                !url.pathname.startsWith('/search') ||
+                url.searchParams.get('f') === 'user'
             ) {
                 return rawURL;
             }
