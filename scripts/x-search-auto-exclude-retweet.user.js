@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         X Search Auto Exclude Retweet
 // @namespace    net.appgrove.userscripts
-// @version      1.0.3
+// @version      1.0.4
 // @description  Automatically appends "-filter:retweets" to search queries on X/Twitter to exclude retweets from search results.
 // @author       appgrove
 // @license      Apache-2.0
@@ -139,7 +139,7 @@
         }
     }
 
-    // Xのルーターが古い検索条件を保持しないよう、ユーザータブは通常遷移する。
+    // Xのルーターが古い検索条件を保持しないよう、条件の変更時は通常遷移する。
     document.addEventListener('click', (event) => {
         if (event.defaultPrevented || event.button !== 0 ||
             event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
@@ -153,8 +153,7 @@
 
         const rewrittenURL = rewriteSearchURL(link.href);
 
-        if (rewrittenURL === link.href ||
-            new URL(rewrittenURL).searchParams.get('f') !== 'user') return;
+        if (rewrittenURL === link.href) return;
 
         event.preventDefault();
         event.stopImmediatePropagation();
@@ -168,8 +167,7 @@
         history[method] = function (state, title, url) {
             const rewrittenURL = rewriteSearchURL(url);
 
-            if (rewrittenURL !== url &&
-                new URL(rewrittenURL).searchParams.get('f') === 'user') {
+            if (rewrittenURL !== url) {
                 // URLだけの変更ではReactの検索状態が更新されないため読み直す。
                 location[method === 'pushState' ? 'assign' : 'replace'](rewrittenURL);
                 return;
@@ -187,10 +185,6 @@
     const initialURL = rewriteSearchURL(location.href);
 
     if (initialURL !== location.href) {
-        if (new URL(initialURL).searchParams.get('f') === 'user') {
-            location.replace(initialURL);
-        } else {
-            history.replaceState(history.state, '', initialURL);
-        }
+        location.replace(initialURL);
     }
 })();
