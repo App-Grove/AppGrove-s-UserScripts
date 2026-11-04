@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         X Search Auto Exclude Retweet
 // @namespace    net.appgrove.userscripts
-// @version      1.0.4
+// @version      1.0.5
 // @description  Automatically appends "-filter:retweets" to search queries on X/Twitter to exclude retweets from search results.
 // @author       appgrove
 // @license      Apache-2.0
@@ -181,10 +181,24 @@
         };
     }
 
-    // スクリプト実行時点ですでに検索ページにいる場合
-    const initialURL = rewriteSearchURL(location.href);
+    // 履歴APIの差し替えを経由しないSPA遷移や、戻る・進むにも対応する。
+    let lastURL;
 
-    if (initialURL !== location.href) {
-        location.replace(initialURL);
+    function checkCurrentURL() {
+        const currentURL = location.href;
+
+        if (currentURL === lastURL) return;
+        lastURL = currentURL;
+
+        const rewrittenURL = rewriteSearchURL(currentURL);
+
+        if (rewrittenURL !== currentURL) {
+            location.replace(rewrittenURL);
+        }
     }
+
+    window.addEventListener('popstate', checkCurrentURL);
+    window.addEventListener('pageshow', checkCurrentURL);
+    setInterval(checkCurrentURL, 250);
+    checkCurrentURL();
 })();
