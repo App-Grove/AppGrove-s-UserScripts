@@ -11,6 +11,25 @@ Edge: [Violentmonkey - Microsoft Edge Addons](https://microsoftedge.microsoft.co
 手動インストール: [Violentmonkey - GitHub](https://github.com/violentmonkey/violentmonkey)  
   
 ## UserScript一覧
+
+### DeepSeek
+#### Custom Instruction Injector for DeepSeek
+DeepSeekの公式チャットでカスタム指示を設定できるようにします。
+
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/deepseek-custom-instruction.user.js)
+```
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/deepseek-custom-instruction.user.js
+```
+
+### Fluxer
+#### Fluxer Ctrl+Enter to Send
+Fluxerのチャットで、Enterで改行、Ctrl+Enterで送信できるようにします。
+
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/fluxer-ctrl+enter-send.user.js)
+```
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/fluxer-ctrl+enter-send.user.js
+```
+
 ### Google Sites
 #### Google Sites Alert
 Google Sitesを開いた際、Google公式でないことを警告するアラートを表示します。  
@@ -28,7 +47,7 @@ GMO Tenbin AIのテーマ設定をOSの設定と同期します。
 https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/tenbinai-auto-theme.user.js
 ```
 
-### Twitter
+### Twitter(現X)
 #### Show All Posts on Twitter/X Profiles
 Twitterのプロフィールページで、デフォルトで「ポスト」ではなく「すべて」を表示するようにします。
 
@@ -61,13 +80,20 @@ Twitter/Xの共有メニューで、通常のURLのクエリパラメータを�
 https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-share-url-improver.user.js
 ```
 
-### DeepSeek
-#### Custom Instruction Injector for DeepSeek
-DeepSeekの公式チャットでカスタム指示を設定できるようにします。
+#### Bypass t.co on Copy
+Twitter/Xのリンクをコピーする際、t.co短縮URLを展開してコピーするようにします。
 
-[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/deepseek-custom-instruction.user.js)
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-bypass-tco.user.js)
 ```
-https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/deepseek-custom-instruction.user.js
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-bypass-tco.user.js
+```
+
+#### X Search Auto Exclude Retweet
+Twitter/Xの検索に -filter:retweets を自動追加することで、検索結果からリツイートを除外します。
+
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-search-auto-exclude-retweet.user.js)
+```
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-search-auto-exclude-retweet.user.js
 ```
 
 ### アーカイブ
