@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         X Search Auto Exclude Retweet
 // @namespace    net.appgrove.userscripts
-// @version      1.0.1
+// @version      1.0.2
 // @description  Automatically appends "-filter:retweets" to search queries on X/Twitter to exclude retweets from search results.
 // @author       appgrove
 // @license      Apache-2.0
@@ -34,14 +34,26 @@
     }
 
     /**
+     * ユーザー検索では既存のフィルターも取り除く。
+     */
+    function adjustFilter(query, url) {
+        if (url.searchParams.get('f') === 'user') {
+            return query.replace(/(^|\s)-filter:retweets(?=$|\s)/gi, '').trim();
+        }
+
+        return appendFilter(query);
+    }
+
+    /**
      * Reactが管理するinputの値を安全に変更する。
      */
     function updateInput(input) {
         if (!(input instanceof HTMLInputElement)) return;
-        if (new URL(location.href).searchParams.get('f') === 'user') return;
 
         const current = input.value;
-        const updated = appendFilter(current);
+        const url = new URL(location.href);
+        const isUserSearch = url.searchParams.get('f') === 'user';
+        const updated = adjustFilter(current, url);
 
         if (current === updated) return;
 
@@ -54,8 +66,8 @@
 
         input.dispatchEvent(new InputEvent('input', {
             bubbles: true,
-            inputType: 'insertText',
-            data: FLAG
+            inputType: isUserSearch ? 'deleteContentBackward' : 'insertText',
+            data: isUserSearch ? null : FLAG
         }));
     }
 
@@ -97,7 +109,7 @@
 
     /**
      * SPAのURL遷移にも対応する。
-     * 検索URLのqパラメータを確認してフィルターを追加する。
+     * 検索URLのqパラメータと検索種別に応じてフィルターを調整する。
      */
     function rewriteSearchURL(rawURL) {
         if (rawURL == null) return rawURL;
@@ -107,8 +119,7 @@
 
             if (
                 !/(^|\.)((x|twitter)\.com)$/i.test(url.hostname) ||
-                !url.pathname.startsWith('/search') ||
-                url.searchParams.get('f') === 'user'
+                !url.pathname.startsWith('/search')
             ) {
                 return rawURL;
             }
@@ -117,7 +128,7 @@
 
             if (!query) return rawURL;
 
-            const updated = appendFilter(query);
+            const updated = adjustFilter(query, url);
 
             if (query === updated) return rawURL;
 
