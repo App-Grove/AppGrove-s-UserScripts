@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Fluxer Ctrl+Enter to Send
 // @namespace    net.appgrove.userscripts
-// @version      1.0.0
-// @description  Use Enter for a new line and Ctrl+Enter to send in Fluxer chat.
+// @version      1.1.0
+// @description  Use Enter for a new line and Ctrl+Enter to send, with a shortcut hint in Fluxer chat.
 // @author       appgrove
 // @license      Apache-2.0
 // @homepageURL  https://github.com/App-Grove/AppGrove-s-UserScripts
@@ -52,6 +52,42 @@
       ? editor
       : null;
   }
+
+  const placeholderSuffix = ' (Ctrl+Enter)';
+
+  function updatePlaceholders() {
+    const hosts = document.querySelectorAll('flx-channel-textarea-composer');
+    for (const host of hosts) {
+      const editor = host.querySelector('[data-channel-textarea="true"]');
+      if (!findComposer(editor)) {
+        continue;
+      }
+
+      const label = editor.getAttribute('aria-placeholder');
+      if (label && !label.endsWith(placeholderSuffix)) {
+        editor.setAttribute('aria-placeholder', label + placeholderSuffix);
+      }
+
+      const placeholder = host.querySelector('flx-lexical-composer-input-placeholder');
+      const text = placeholder?.textContent;
+      if (text && !text.endsWith(placeholderSuffix)) {
+        placeholder.textContent = text + placeholderSuffix;
+      }
+    }
+  }
+
+  // Observe from document-start, including channel switches and placeholder
+  // replacements when the composer becomes empty. Only write when needed so
+  // our own mutations do not cause an observer loop.
+  const placeholderObserver = new MutationObserver(updatePlaceholders);
+  placeholderObserver.observe(document, {
+    childList: true,
+    subtree: true,
+    characterData: true,
+    attributes: true,
+    attributeFilter: ['aria-placeholder'],
+  });
+  updatePlaceholders();
 
   const isMac = /Mac/i.test(navigator.platform);
 
