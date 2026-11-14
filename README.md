@@ -21,6 +21,15 @@ DeepSeekの公式チャットでカスタム指示を設定できるようにし
 https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/deepseek-custom-instruction.user.js
 ```
 
+### Discord
+#### Discord Ctrl+Enter to Send
+Discordのチャットで、Enterで改行、Ctrl+Enterで送信できるようにします。
+
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/discord-ctrl+enter-send.user.js)
+```
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/discord-ctrl+enter-send.user.js
+```
+
 ### Fluxer
 #### Fluxer Ctrl+Enter to Send
 Fluxerのチャットで、Enterで改行、Ctrl+Enterで送信できるようにします。
