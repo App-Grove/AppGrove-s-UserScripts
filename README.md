@@ -89,6 +89,14 @@ Twitter/Xの共有メニューで、通常のURLのクエリパラメータを�
 https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-share-url-improver.user.js
 ```
 
+#### Twitter/X Share Screenshot
+Twitter/Xの共有メニューに投稿のスクリーンショットをコピーする機能を追加します。
+
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-share-screenshot.user.js)
+```
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/x-share-screenshot.user.js
+```
+
 #### Bypass t.co on Copy
 Twitter/Xのリンクをコピーする際、t.co短縮URLを展開してコピーするようにします。
 
