@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Twitter/X Share Screenshot
 // @namespace    net.appgrove.userscripts
-// @version      1.1.9
+// @version      1.1.10
 // @description  Add a share menu item to copy the displayed post as a PNG to the clipboard
 // @author       appgrove
 // @license      Apache-2.0
@@ -279,7 +279,7 @@
       if (!copyItem) continue;
       const item = createMenuItem(copyItem);
       item.setAttribute('aria-disabled', String(busy));
-      copyItem.parentElement.appendChild(item);
+      items[0].before(item);
     }
   }
 
