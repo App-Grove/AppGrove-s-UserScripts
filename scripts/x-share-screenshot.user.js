@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Twitter/X Share Screenshot
 // @namespace    net.appgrove.userscripts
-// @version      1.1.10
+// @version      1.1.11
 // @description  Add a share menu item to copy the displayed post as a PNG to the clipboard
 // @author       appgrove
 // @license      Apache-2.0
@@ -28,6 +28,7 @@
   const MENU_SELECTOR = '[data-testid="Dropdown"], [role="menu"]';
   const TWEET_SELECTOR = 'article[data-testid="tweet"], article[role="article"]';
   const TEXT_SELECTOR = '[data-testid="tweetText"]';
+  const DEFAULT_FONT = 'TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
   const SHOW_MORE_SELECTOR = '[data-testid="tweet-text-show-more-link"]';
   const IMAGE_HOSTS = new Set(['pbs.twimg.com', 'abs.twimg.com']);
   const SPACING_PROPERTIES = [
@@ -729,6 +730,9 @@
     wrapper.dir = snapshot.direction;
     clonedDocument.body.appendChild(wrapper);
     wrapper.appendChild(clone);
+    for (const node of [clone, ...clone.querySelectorAll('*')]) {
+      node.style.setProperty('font-family', DEFAULT_FONT, 'important');
+    }
     clone.style.setProperty('width', `${snapshot.width}px`, 'important');
     clone.style.setProperty('box-sizing', 'border-box', 'important');
     clone.style.setProperty('transform', 'none', 'important');
@@ -829,6 +833,7 @@
     const results = await Promise.allSettled(tasks);
     const failure = results.find(result => result.status === 'rejected');
     if (failure) throw failure.reason;
+    await clonedDocument.fonts.ready;
   }
 
   function renderWithFirefoxCompat(tweet, options) {
