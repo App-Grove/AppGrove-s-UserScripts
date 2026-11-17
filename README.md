@@ -48,7 +48,7 @@ https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/
 ```
 
 ### note
-#### note Old Article URL Recovery
+#### Old Article URL Redirector for note
 ユーザー名が変更されたnote記事を、旧URLから新URLへリダイレクトします。
 
 [インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/note-old-url-recovery.user.js)

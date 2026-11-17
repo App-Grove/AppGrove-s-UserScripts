@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         note Old Article URL Recovery
+// @name         Old Article URL Redirector for note
 // @namespace    net.appgrove.userscripts
 // @version      1.0.0
 // @description  redirect note articles from changed usernames to new URLs.
