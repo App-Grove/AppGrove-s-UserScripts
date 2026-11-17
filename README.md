@@ -47,6 +47,15 @@ Google Sitesを開いた際、Google公式でないことを警告するアラ�
 https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/google-sites-alert.user.js
 ```
 
+### note
+#### note Old Article URL Recovery
+ユーザー名が変更されたnote記事を、旧URLから新URLへリダイレクトします。
+
+[インストール](https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/note-old-url-recovery.user.js)
+```
+https://github.com/App-Grove/AppGrove-s-UserScripts/raw/refs/heads/main/scripts/note-old-url-recovery.user.js
+```
+
 ### TenbinAI
 #### TenbinAI Auto Theme
 GMO Tenbin AIのテーマ設定をOSの設定と同期します。
